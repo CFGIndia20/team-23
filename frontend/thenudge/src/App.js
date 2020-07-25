@@ -13,6 +13,7 @@ import MakeSlots from './components/MakeSlots/makeSlots'
 import Login from './components/login'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Recruiter from './pages/Recruiter/recruiter';
 
 function App() {
   return (
@@ -21,13 +22,13 @@ function App() {
       <Switch>
             <Route exact path="/" component={Main}/>
             <Route exact path="/register" component={Register}/>
-            <Route exact path="/student" component={Student} />
-						<Route exact path="/admin" component={Admin} />
-						<Route exact path="/teacher" component={Teacher} />
+            <Route exact path="/Student" component={Student} />
+						<Route exact path="/Admin" component={Admin} />
+						<Route exact path="/Teacher" component={Teacher} />
             <Route exact path="/error" component={ErrorPage}/>
             <Route exact path="/MakeSlots" component={MakeSlots}/>
             <Route exact path="/login" component={Login}/>
-            
+            <Route exact path="/Recruiter" component={Recruiter}/>        
       </Switch>
       <Footer/>
     </div>
