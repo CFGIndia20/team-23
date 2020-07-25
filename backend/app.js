@@ -5,7 +5,6 @@ var expressSanitizer = require("express-sanitizer")
 var methodOverride = require("method-override")
 var passport = require("passport")
 var passportLocal = require("passport-local")
-var passportLocalMongoose = require("passport-local-mongoose")
 var expressSession = require("express-session")
 // var User = require("./User.js")
 // var Project = require("./Project.js")
@@ -23,9 +22,9 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(expressSanitizer())
 app.use(methodOverride("_method"))
 
-passport.use(new passportLocal(User.authenticate()))
-passport.serializeUser(User.serializeUser())
-passport.deserializeUser(User.deserializeUser())
+// passport.use(new passportLocal(User.authenticate()))
+// passport.serializeUser(User.serializeUser())
+// passport.deserializeUser(User.deserializeUser())
 
 app.use(expressSession({
 	secret:"qwerty",
@@ -40,10 +39,14 @@ app.use(function(req,res,next){
 	res.locals.user = req.user
 	next()
 })
+ 
+mongoose.connect("mongodb+srv://admin:admin@cluster0.gkf3j.mongodb.net/nudge?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true})
+const db = mongoose.connection
+db.on('error', console.error)
+db.once('open', ()=>{
+    console.log('connected to mongodb server')
+})
 
-const url = "mongodb+srv://admin:admin@cluster0.gkf3j.mongodb.net/<dbname>?retryWrites=true&w=majority"
-
-var server = app.listen("3000","127.0.0.1",function(){
+app.listen(process.env.PORT || 3000,"127.0.0.1",function(){
 	console.log("Server is Running.")
-	console.log(server.address().port+" "+server.address().address)
 })
