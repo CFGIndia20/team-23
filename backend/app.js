@@ -15,7 +15,7 @@ db.once('open', ()=>{
     console.log('connected to mongodb server')
 })
 
-app.use("/", require('./routes/index'))
+app.use("/", require('./routes/index'));
 app.use("/admin", require("./routes/admin"));
 app.use("/student", require("./routes/student"));
 
