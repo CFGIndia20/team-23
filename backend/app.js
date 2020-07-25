@@ -41,7 +41,7 @@ app.use(function(req,res,next){
 	next()
 })
 
-mongoose.connect("mongodb://localhost:27017/CroudFunding",{useNewUrlParser:true})
+const url = "mongodb+srv://admin:admin@cluster0.gkf3j.mongodb.net/<dbname>?retryWrites=true&w=majority"
 
 var server = app.listen("3000","127.0.0.1",function(){
 	console.log("Server is Running.")
