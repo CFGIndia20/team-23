@@ -10,6 +10,4 @@ const batch = mongoose.Schema({
     link: {type: String, default: ''}
 });
 
-
-
 module.exports = mongoose.model('Batch', batch);

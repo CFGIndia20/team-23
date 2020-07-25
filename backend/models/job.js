@@ -7,6 +7,4 @@ const job = mongoose.Schema({
     isSelected: {type: Boolean, default: true}
 });
 
-
-
 module.exports = mongoose.model('Job', job);

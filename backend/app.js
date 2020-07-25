@@ -1,22 +1,19 @@
-var express = require("express")
-var mongoose =require("mongoose")
-var bodyParser = require("body-parser")
-var expressSanitizer = require("express-sanitizer")
-var methodOverride = require("method-override")
-var passport = require("passport")
-var passportLocal = require("passport-local")
-var expressSession = require("express-session")
+const express = require("express")
+const mongoose =require("mongoose")
+const bodyParser = require("body-parser")
+const expressSanitizer = require("express-sanitizer")
+const methodOverride = require("method-override")
+const passport = require("passport")
+const passportLocal = require("passport-local")
+const expressSession = require("express-session")
 // var User = require("./User.js")
 // var Project = require("./Project.js")
 // var Comment = require("./Comment.js")
+const indexRoutes = require("./routes/index");
 
 var app = express()
 
 app.set("views","./ejs")
-
-app.use(express.static("./css"))
-app.use(express.static("./js"))
-app.use(express.static("./ejs"))
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(expressSanitizer())
@@ -46,6 +43,8 @@ db.on('error', console.error)
 db.once('open', ()=>{
     console.log('connected to mongodb server')
 })
+
+app.use("/", indexRoutes);
 
 app.listen(process.env.PORT || 3000,"127.0.0.1",function(){
 	console.log("Server is Running.")
