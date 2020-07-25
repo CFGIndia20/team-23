@@ -4,7 +4,7 @@ const bodyParser = require("body-parser")
 
 var app = express()
 
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.gkf3j.mongodb.net/nudge?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true})
 const db = mongoose.connection

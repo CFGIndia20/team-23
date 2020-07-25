@@ -6,8 +6,11 @@ const batch = mongoose.Schema({
     noOfStudent: {type: Number, default: 0},
     isFull: {type: Boolean, default: false},
     startDate: {type: Date, default: Date.now()},
-    endDate: {type: Date, default: Date.now()},
+    endDate: {type: Date, default: null},
     teacher:  {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    students: [{
+        studentId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+    }],
     link: {type: String, default: ''}
 });
 
