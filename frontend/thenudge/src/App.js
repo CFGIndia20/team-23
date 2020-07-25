@@ -9,6 +9,7 @@ import Register from './components/register';
 import Header from './components/Header/header';
 import Main from './pages/mainpage'
 import Footer from './components/Footer/footer'
+import MakeSlots from './components/MakeSlots/makeSlots'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,6 +24,7 @@ function App() {
 						<Route exact path="/admin" component={Admin} />
 						<Route exact path="/teacher" component={Teacher} />
             <Route exact path="/error" component={ErrorPage}/>
+            <Route exact path="/MakeSlots" component={MakeSlots}/>
             
       </Switch>
       <Footer/>

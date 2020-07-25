@@ -19,7 +19,23 @@ router.post("/addRoute", function(req, res) {
     })
 });
 
+router.get("/viewslots", (req, res) => {
+    Batch.find()
+    .then(batches => {
+        res.status(400).json(batches)
+    })
+    .catch(err =>{
+        res.status(400).send(err)
+    })
+});
 
-
-
+router.post("/deleteslot", (req, res) => {
+    Batch.findByIdAndDelete(req.body.batchID)
+    .then(batch => {
+        res.status(200).send("Slot Deleted")
+    })
+    .catch(err => {
+        res.status(400).send(err)
+    })
+})
 module.exports = router;

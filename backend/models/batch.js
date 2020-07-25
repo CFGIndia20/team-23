@@ -4,6 +4,7 @@ const batch = mongoose.Schema({
     time: {type: String, default: ''},
     scoreRange: {type: String, default: ''},
     noOfStudent: {type: Number, default: 0},
+    isFull: {type: Boolean, default: false},
     startDate: {type: Date, default: Date.now()},
     endDate: {type: Date, default: null},
     teacher:  {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
