@@ -5,10 +5,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+      <HashRouter>
+      <PersistGate persistor = {persistor}>
+      <App />
+      </PersistGate>
+    </HashRouter>
+    </Provider>,
 );
 
 // If you want your app to work offline and load faster, you can change
