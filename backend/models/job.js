@@ -7,7 +7,8 @@ const job = mongoose.Schema({
     students: [{
         studentId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
     }],
-    isSelected: {type: Boolean, default: true}
+    seatAvailable: {type: Number, default: 0},
+    isOpen: {type: Boolean, default: true}
 });
 
 module.exports = mongoose.model('Job', job);

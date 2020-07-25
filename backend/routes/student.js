@@ -39,3 +39,24 @@ router.post("/allotSlot", function(req, res){
     )
     .catch(err =>res.status(400).send(err))
 });
+
+//display available job
+router.post("/displayAvailJob", function(req, res) {
+    Batch.find({ isFull : false })
+    .then(slot => {
+        console.log("Slot info", slot)
+        if(!slot){
+            res.status(404).send("Slot Not Found")
+        }
+        else{
+            console.log("Slot",slot)
+            
+            .then(
+                res.status(200).json(slot)
+            )
+            .catch(err =>res.status(400).send(err))
+        }
+       
+    });
+
+});
