@@ -5,12 +5,12 @@ import ViewJobs from '../../components/ViewJobs/ViewJobs';
 
 const Recruiter = () => (
     <Tabs defaultActiveKey="addjobs" id="uncontrolled-tab-example">
-        <Tab eventKey="addjobs" title="Available Jobs">
+        <Tab eventKey="addjobs" title="Add Jobs">
           <AddJobs/>
         </Tab>
         <Tab eventKey="viewSlots" title="View Jobs">
           <ViewJobs/>
-        </Tab>  
+        </Tab>
     </Tabs>
 )
 

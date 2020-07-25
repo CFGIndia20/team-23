@@ -2,6 +2,7 @@ import React from 'react';
 import {Form, Button, Tab, Tabs } from 'react-bootstrap';
 import axios from 'axios'
 import serverLink from '../../serverlink';
+import {connect} from 'react-redux'
 // import MakeSlots from '../../components/MakeSlots/makeSlots';
 // import ViewSlots from '../../components/ViewSlots/ViewSlots';
 //import AddTeacherRecruiter from '../../components/AddTeacherRec/addTeacherRecruiter';
@@ -18,7 +19,7 @@ class AddJobs extends React.Component{
 
   }
 
-  handleOnChangeCompanyName = e => {
+  handleOnChangeName = e => {
     this.setState({
       cname: e.target.value,
     });
@@ -40,12 +41,13 @@ class AddJobs extends React.Component{
     e.preventDefault();
 
     const data = {
+      _id : this.props.currentUser._id,
       companyName: this.state.cname,
       skillReq: this.state.skill,
-      seatAsvailable: this.state.seat,
+      seatAvailable: this.state.seat,
     };
 
-    axios.post(`${serverLink}/recruiter`, data)
+    axios.post(`${serverLink}/employer/addjob`, data)
       .then(res => console.log(res.data));
 
     this.setState({
@@ -77,7 +79,7 @@ class AddJobs extends React.Component{
               type="text"
               value={this.state.skills}
               name="Skills"
-              onChange={this.handleOnChangeSkills} />
+              onChange={this.handleOnChangeSkill} />
           </Form.Group>
 
             <Form.Group controlId="formBasicSkill" >
@@ -86,7 +88,7 @@ class AddJobs extends React.Component{
               type="number"
               value={this.state.seat}
               name="Seat"
-              onChange={this.handleOnChangeSkills} />
+              onChange={this.handleOnChangeSeat} />
           </Form.Group>
 
           <Button variant="primary" type="submit">
@@ -100,6 +102,10 @@ class AddJobs extends React.Component{
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
 
 
-export default AddJobs
+
+export default connect(mapStateToProps)(AddJobs)

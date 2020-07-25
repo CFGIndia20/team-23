@@ -13,6 +13,8 @@ class Main extends React.Component{
                 return <Redirect to="/admin"/>
             case 'Teacher':
                 return <Redirect to="/teacher"/>
+            case 'Recruiter':
+                return <Redirect to="/recruiter"/>
             default :
                 return  <Redirect to="/error"/>
         }

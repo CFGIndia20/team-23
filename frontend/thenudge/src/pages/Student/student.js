@@ -2,6 +2,7 @@ import React from 'react'
 import {Tab, Tabs} from 'react-bootstrap';
 import ViewJobs from '../../components/ViewJobs/ViewJobs';
 import { Redirect } from 'react-router-dom';
+import {connect} from 'react-redux'
 
 
 const Student = (props) => ((props.currentUser.category=='Student' ? (
@@ -17,4 +18,5 @@ const mapStateToProps = ({ user }) => ({
     currentUser: user.currentUser,
 });
 
-export default Student
+
+export default connect(mapStateToProps)(Student)

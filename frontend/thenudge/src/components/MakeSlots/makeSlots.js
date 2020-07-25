@@ -20,19 +20,24 @@ class MakeSlots extends React.Component {
 
     handleTimePickerChange = (e) => {
         console.log(e.target.value)
-        this.setState({time:e.target.value})
+        this.setState({time : e.target.value})
         
     }
 
     handleSubmit = (e) => {
-        const data ={
-            time : this.startTime,
+        e.preventDefault()
+
+        const data = {
+            // time : this.state.startTime,
+            time : "11:00AM - 12:00PM",
             link : this.state.link
         }
 
-        axios.post(`${serverLink}/admin/addslot`)
+        console.log(data)
+        axios.post(`${serverLink}/admin/addSlot`,data)
             .then(res => {
                 if (res.status == 200) {
+                    console.log(res)
                     this.setState({ onSuccess: true });
                 }
             })
