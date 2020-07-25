@@ -2,7 +2,10 @@ var express = require('express');
 var router = express.Router();
 var Job = require('../models/job');
 const job = require('../models/job');
+const mongoose = require('mongoose');
+const ObjectId = require('mongodb').ObjectID;
 
+//add-new-job
 router.post('/addjob', (req,res,next) =>{
     let tempJob =  new Job(req.body);
     console.log(req.body);
@@ -16,6 +19,7 @@ router.post('/addjob', (req,res,next) =>{
     })
 });
 
+//get-list-of-jobs
 router.get("/getJobs", (req, res) => {
     Job.find()
     .then(jobs => {
@@ -26,10 +30,10 @@ router.get("/getJobs", (req, res) => {
     })
 });
 
-router.patch('/editjob/:id', function (req, res) {
-    var updateObject = req.body; // {last_name : "smith", age: 44}
-    var id = req.params.id;
-    Job.update({_id  : ObjectId(id)}, {$set: updateObject});
-});
+// router.patch('/editjob/:id', function (req, res) {
+//     var updateObject = req.body; 
+//     var id = req.params.id;
+//     Job.update({_id  : ObjectId(id)}, {$set: updateObject});
+// });
   
 module.exports = router;

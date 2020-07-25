@@ -1,9 +1,8 @@
 import React from 'react';
 import Slot from '../Slot/slot';
 import {Table} from 'react-bootstrap';
-import axios from 'axios';
 import serverLink from '../../serverlink';
-
+import axios from 'axios';
 
 class ViewSlots extends React.Component {
 
@@ -38,7 +37,7 @@ class ViewSlots extends React.Component {
                     </tr>
                 </thead>
                 <tbody>{
-                    this.state.slots.map((item,idx) => <Slot slot={item} key={idx}/> )
+                    this.state.slots.map((item,idx) => <Slot action={this.props.action} slot={item} key={idx}/> )
                     }
                 </tbody>
             </Table>

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import bcrypt from 'bcryptjs';
 import serverLink from '../serverlink';
+import {withRouter} from 'react-router-dom';
 
 
 
@@ -80,15 +81,14 @@ class Register extends Component {
     };
 
     axios.post(`${serverLink}/register`, data)
-      .then(res => console.log(res.data));
+      .then(res => {
+        console.log(res.data)
+        if(this.state.category === 'Student'){
+          this.props.history.push('/chooseSlot')
+        }
+      });
 
-    this.setState({
-      name: '',
-      email: '',
-      password: '',
-      category: 'Student',
-      skills: '',
-    })
+    
   };
 
 
@@ -147,7 +147,7 @@ class Register extends Component {
           </Form.Group>
           <Button variant="primary" type="submit">
             Register
-                </Button>
+          </Button>
 
         </Form>
       </div>
@@ -158,4 +158,4 @@ class Register extends Component {
 }
 
 
-export default Register;
+export default withRouter(Register);
