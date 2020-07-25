@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var User = require('../models/user');
+var Batch = require('../models/batch');
 
 // For registering user
 router.post("/addTeacher", function(req, res) {
@@ -24,7 +24,6 @@ router.post("/addTeacher", function(req, res) {
     });
 });
 
-
 // Login Check
 router.post("/login", passport.authenticate("local", {
     successRedirect : "/campgrounds",
@@ -32,5 +31,20 @@ router.post("/login", passport.authenticate("local", {
 }),function(req, res) {
 
 }); 
+
+router.post("/addRoute", function(req, res) {
+    var tempBatch = new Batch(
+        {
+            time : req.body.time
+        });
+    console.log(req.body.time);
+    tempBatch.save()
+    .then(reg => {
+        res.status(200).send("Slot Created Successfully");
+    })
+    .catch(err =>{
+        res.status(400).send(err)
+    })
+});
 
 module.exports = router;
