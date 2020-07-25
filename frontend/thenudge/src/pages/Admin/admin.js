@@ -27,8 +27,6 @@ class Admin extends React.Component {
             </Container>
         )
     }
-
-
 } 
 
 

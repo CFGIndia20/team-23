@@ -1,6 +1,4 @@
 import React from 'react'
-// import TimePicker from 'react-bootstrap-time-picker';
-// import DatePicker from 'react-bootstrap-date-picker';
 import { Form, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import serverLink from '../../serverlink';
@@ -44,7 +42,6 @@ class MakeSlots extends React.Component {
                 }
             })
             .catch(err => console.log(err))
-
     }
 
     render() {
