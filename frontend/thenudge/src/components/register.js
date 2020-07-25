@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import { Card, Container, CardDeck } from 'react-bootstrap'
 import axios from 'axios';
 import {Form, Button} from 'react-bootstrap';
+import bcrypt from 'bcryptjs';
+import serverLink from '../serverlink';
+
 
 
 
@@ -52,21 +55,25 @@ class Register extends Component{
       onSubmit = async e => {
         e.preventDefault ();
 
+        const password = this.state.password;
+        const salt = bcrypt.genSaltSync(10)
+        const hash = bcrypt.hashSync(password,salt)
+
 
         const data = {
           name: this.state.name,
-          username: this.state.username,
-          password: this.state.password,
+          email: this.state.username,
+          password: hash,
           category : this.state.category,
-          skills : this.state.skills
+          skill : this.state.skills
         };
 
-        axios.post('http://localhost:3000/register', data)
+        axios.post(`${serverLink}/register`, data)
             .then(res => console.log(res.data));
 
             this.setState({
               name : '',
-              username: '',
+              email : '',
               password: '',
               category: '',
               skills: '',
