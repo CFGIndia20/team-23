@@ -147,7 +147,7 @@ class Register extends Component {
           </Form.Group>
           <Button variant="primary" type="submit">
             Register
-                </Button>
+          </Button>
 
         </Form>
       </div>

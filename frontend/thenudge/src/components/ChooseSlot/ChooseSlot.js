@@ -11,13 +11,18 @@ class ChooseSlot extends Component {
   constructor(props) {
     super(props)
     this.state = {
+<<<<<<< HEAD
       startTime: '',
       slots: []
 
+=======
+         startTime: ''
+>>>>>>> 7470da33b2e8239446fd9820d800155140058860
     };
 
   }
 
+<<<<<<< HEAD
 
   componentDidMount() {
     axios.get(`${serverLink}/student/displayAvailBatch`)
@@ -37,6 +42,21 @@ class ChooseSlot extends Component {
   handleTimePickerChange = (e) => {
     console.log(e.target.value)
     this.setState({ time: e.target.value })
+=======
+     //function to set time slot choosen
+     handleTimePickerChange = (e) => {
+        console.log(e.target.value)
+        this.setState({time:e.target.value})
+        
+    }
+
+    //function to handle post route for alloting slots
+    handleSubmit = async(e) => {
+        e.preventDefault();
+        const data ={
+            time : this.startTime
+        }
+>>>>>>> 7470da33b2e8239446fd9820d800155140058860
 
   }
 

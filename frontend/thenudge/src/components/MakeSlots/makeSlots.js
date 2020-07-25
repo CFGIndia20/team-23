@@ -3,6 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import serverLink from '../../serverlink';
 
+
 class MakeSlots extends React.Component {
 
     constructor(props) {
@@ -10,18 +11,13 @@ class MakeSlots extends React.Component {
         this.state = {
             time: '',
             onSuccess: false,
-            link : "www.trial.com"
+            link : "www.trial.com"   //dummy link
         }
-    }
-
-    componentDidMount() {
-        
     }
 
     handleTimePickerChange = (e) => {
         console.log(e.target.value)
-        this.setState({time : e.target.value})
-        
+        this.setState({time : e.target.value})       
     }
 
     handleSubmit = (e) => {
@@ -57,9 +53,11 @@ class MakeSlots extends React.Component {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+
                 <Alert variant="success" hidden={!this.state.onSuccess}>
                     Slot Added Succesfully
                 </Alert>
+                
             </Form>
         )
     }

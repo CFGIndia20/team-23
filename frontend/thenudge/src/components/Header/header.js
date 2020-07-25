@@ -15,8 +15,6 @@ class Header extends React.Component {
 
     }
 
-
-
     render() {
         return (
             <Navbar bg="dark" variant="dark">
@@ -36,9 +34,7 @@ class Header extends React.Component {
 
         )
     }
-
 } 
-
 
 const mapStateToProps = ({ user }) => ({
     currentUser: user.currentUser,
