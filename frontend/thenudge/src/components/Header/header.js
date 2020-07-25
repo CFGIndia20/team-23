@@ -15,7 +15,7 @@ class Header extends React.Component {
 
     }
 
-    renderSignOut = () => (this.props.currentUser ? <Button style={{ float: "right" }} variant="primary" onClick={()=>resetCurrentUser}>Sign Out</Button>:'')
+    renderSignOut = () => (this.props.currentUser ? (<Button style={{ float: "right" }} variant="primary" onClick={()=>resetCurrentUser}>Sign Out</Button>):<span/>)
 
 
     render() {

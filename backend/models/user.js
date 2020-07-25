@@ -1,4 +1,5 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const { Int32 } = require("mongodb");
 
 const userSchema = mongoose.Schema({
     name: {type: String, default: ''},
@@ -9,7 +10,8 @@ const userSchema = mongoose.Schema({
     batch: [{
         batchId: {type: mongoose.Schema.Types.ObjectId, ref: 'Batch'}
     }],
-    skill: {type: String, default: ''}
+    skill: {type: String, default: ''},
+    noOfSlotsAlloted : {type: Number, default: 0}
 });
 
 module.exports = mongoose.model('User', userSchema);
