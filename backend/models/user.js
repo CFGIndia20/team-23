@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { Int32 } = require("mongodb");
 
 const userSchema = mongoose.Schema({
     name: {type: String, default: ''},
