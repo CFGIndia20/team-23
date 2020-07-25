@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const User = require('../models/user')
+const User = require('../models/user')  
 const bcrypt = require('bcryptjs')
 
 router.post('/register', (req,res,next) =>{
     let tempUser =  new User(req.body);
+    console.log(req.body);
     tempUser.save()
     .then(reg => {
         res.status(200).send("Registration Success");
@@ -14,7 +15,7 @@ router.post('/register', (req,res,next) =>{
 });
 
 router.post('/login',(req,res)=>{
-    User.findOne({username: req.body.username})
+    User.findOne({name: req.body.username})
     .then(user => {
         // console.log("User info", user)
         if(!user){
