@@ -35,10 +35,15 @@ router.get("/viewslots", (req, res) => {
 });
 
 router.post("/deleteslot", (req, res) => {
+    console.log(req)
     var batch_id = req.body.batchID
+    console.log(req.body)
+    console.log("Batch ID : " + batch_id);
     var o_bid = new ObjectId(batch_id)
+    console.log(o_bid)
     Batch.findByIdAndDelete({_id: o_bid})
     .then(batch => {
+        console.log(batch);
         res.status(200).send("Slot Deleted")
     })
     .catch(err => {
