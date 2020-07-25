@@ -2,7 +2,7 @@ import React from 'react';
 import {Tab, Tabs} from 'react-bootstrap';
 // import MakeSlots from '../../components/MakeSlots/makeSlots';
 // import ViewSlots from '../../components/ViewSlots/ViewSlots';
-import AddTeacherRecruiter from '../../components/AddTeacherRec/addTeacherRecruiter';
+//import AddTeacherRecruiter from '../../components/AddTeacherRec/addTeacherRecruiter';
 
 class Recruiter extends Component{
 
