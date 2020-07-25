@@ -12,7 +12,7 @@ router.post("/addSlot", function(req, res) {
             time : req.body.time,
             link : req.body.link,
             startDate : req.body.startDate,
-            endDate: new Date(req.body.startDate + 30*24*60*60000)
+            endDate: new Date(req.body.startDate + 4*30*24*60*60000)
 
         });
     tempBatch.save()
