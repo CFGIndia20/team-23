@@ -47,6 +47,23 @@ router.post("/allotSlot/:id", function(req, res){
         res.status(200).send("Slot Booked")
     )
     .catch(err =>res.status(400).send(err))
+
+    // create reusable transporter object using the default SMTP transport
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+        user: 'team23cfg2020@gmail.com', // generated ethereal user
+        pass: 'qwerty@123', // generated ethereal password
+        },
+    });
+
+    // send mail with defined transport object
+    let info = transporter.sendMail({
+        from: '"Team 23" <team23cfg2020@gmail.com>', // sender address
+        to: "aav2406@gmail.com", // list of receivers
+        subject: "Slot Alloted", // Subject line
+        text: "Dear Student, your time slot will be .", // plain text body
+    });
 });
 
 //display available job..
