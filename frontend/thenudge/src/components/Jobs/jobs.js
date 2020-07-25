@@ -1,10 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-
-
-
-
 const Jobs = (props) => (
     <tr>
         <td>{props.job.recruiter}</td>

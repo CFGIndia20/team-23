@@ -6,7 +6,7 @@ import serverLink from '../../serverlink';
 
 const onChoose = (id) => {
     const data = {
-        _id : id
+        _id : id  
     }
     axios.post(`${serverLink}`,data)
     .then(res => console.log(res.data))
@@ -20,8 +20,6 @@ const onDelete = (id) => {
     .then(res => console.log(res.data))
 }
 
-
-
 const sendButton = (action, id) => {
     switch(action){
         case 'choose':
@@ -30,8 +28,6 @@ const sendButton = (action, id) => {
             return <Button onClick={() => onDelete(id)}>Delete</Button>
     }
 }
-
-
 
 const Slot = (props) => (
     <tr>

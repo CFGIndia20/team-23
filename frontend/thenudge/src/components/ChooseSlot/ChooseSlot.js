@@ -12,17 +12,18 @@ class ChooseSlot extends Component {
     super(props)
     this.state = {
          startTime: ''
-  
     };
 
   }
 
+     //function to set time slot choosen
      handleTimePickerChange = (e) => {
         console.log(e.target.value)
         this.setState({time:e.target.value})
         
     }
 
+    //function to handle post route for alloting slots
     handleSubmit = async(e) => {
         e.preventDefault();
         const data ={
@@ -47,5 +48,5 @@ class ChooseSlot extends Component {
   }
 
 
-  export default ChooseSlot;
+export default ChooseSlot;
 
