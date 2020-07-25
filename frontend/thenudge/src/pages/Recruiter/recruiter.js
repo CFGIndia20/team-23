@@ -8,7 +8,7 @@ const Recruiter = () => (
         <Tab eventKey="addjobs" title="Available Jobs">
           <AddJobs/>
         </Tab>
-        <Tab eventKey="viewSlots" title="View Slots">
+        <Tab eventKey="viewSlots" title="View Jobs">
           <ViewJobs/>
     </Tabs>
 )
