@@ -10,6 +10,7 @@ const Recruiter = () => (
         </Tab>
         <Tab eventKey="viewSlots" title="View Slots">
           <ViewJobs/>
+          
     </Tabs>
 )
 

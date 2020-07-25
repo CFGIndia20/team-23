@@ -16,7 +16,7 @@ class MakeSlots extends React.Component {
     }
 
     handleSubmit = () => {
-
+    
     }
 
     render() {

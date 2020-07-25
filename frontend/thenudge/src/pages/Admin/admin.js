@@ -17,7 +17,7 @@ const Admin = () => (
             <AddTeacherRecruiter/>
         </Tab>
     </Tabs>
-    </Container>
+   </Container>
 )
 
 
