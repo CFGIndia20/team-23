@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/user')  
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
 // const batch = require('../models/batch');
 
 router.post('/register', (req,res,next) =>{
@@ -14,6 +15,7 @@ router.post('/register', (req,res,next) =>{
         console.log(err);
         res.status(400).send(err)
     })
+
 });
 
 router.post('/login',(req,res)=>{

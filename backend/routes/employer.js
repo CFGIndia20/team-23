@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var Job = require('../models/job');
 const job = require('../models/job');
+const mongoose = require('mongoose');
+const ObjectId = require('mongodb').ObjectID;
 
 router.post('/addjob', (req,res,next) =>{
     let tempJob =  new Job(req.body);
@@ -26,10 +28,10 @@ router.get("/getJobs", (req, res) => {
     })
 });
 
-router.patch('/editjob/:id', function (req, res) {
-    var updateObject = req.body; // {last_name : "smith", age: 44}
-    var id = req.params.id;
-    Job.update({_id  : ObjectId(id)}, {$set: updateObject});
-});
+// router.patch('/editjob/:id', function (req, res) {
+//     var updateObject = req.body; 
+//     var id = req.params.id;
+//     Job.update({_id  : ObjectId(id)}, {$set: updateObject});
+// });
   
 module.exports = router;
