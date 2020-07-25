@@ -10,11 +10,7 @@ class Header extends React.Component {
 
     handleSignOut =() =>{
         this.props.resetCurrentUser()
-        
-
     }
-
-
 
     render() {
         return (
@@ -35,9 +31,7 @@ class Header extends React.Component {
 
         )
     }
-
 } 
-
 
 const mapStateToProps = ({ user }) => ({
     currentUser: user.currentUser,
