@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import bcrypt from 'bcryptjs';
 import serverLink from '../../serverlink';
+import ViewSlots from '../../components/ViewSlots/ViewSlots'
 
 class ChooseSlot extends Component {
 
@@ -40,22 +41,11 @@ class ChooseSlot extends Component {
   render() {
 
     return (
-
-            <Form onSubmit={this.handleSubmit}>
-
-               <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Please Select the Time for which you want to schedule a slot</Form.Label>
-                    <br />
-                    <input type="time" id="appt" name="appt" min="09:00" max="18:00" required onChange={this.handleTimePickerChange} />
-                </Form.Group>
-
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
+            <ViewSlots action="choose"/>
          )   
       }   
   }
+
 
   export default ChooseSlot;
 

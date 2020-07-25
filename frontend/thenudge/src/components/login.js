@@ -4,6 +4,7 @@ import axios from 'axios';
 import {connect} from 'react-redux'
 import { setCurrentUser } from '../redux/user/user.actions';
 import serverLink from '../serverlink';
+import {Link} from 'react-router-dom';
 
 class Login extends Component{
 
@@ -61,7 +62,7 @@ class Login extends Component{
 
     render(){
         return (
-            <div className="Login">
+            <div className="Login" style={{textAlign:"left", width:"80%", margin:"0 auto"}}>
             <h1> Login </h1> 
             <form onSubmit={this.onSubmit}>
               <div>
@@ -103,6 +104,7 @@ class Login extends Component{
               </div>
                
             </form>
+            <Link to="/register">Register Here</Link>
           </div>
   
         )

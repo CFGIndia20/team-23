@@ -15,7 +15,7 @@ class Admin extends React.Component {
                         <MakeSlots />
                     </Tab>
                     <Tab eventKey="viewSlots" title="View Slots">
-                        <ViewSlots />
+                        <ViewSlots action="delete"/>
                     </Tab>
                     <Tab eventKey="addTeacher" title="Add Teacher/Recruiter">
                         <AddTeacherRecruiter />

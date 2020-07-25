@@ -38,7 +38,7 @@ class ViewSlots extends React.Component {
                     </tr>
                 </thead>
                 <tbody>{
-                    this.state.slots.map((item,idx) => <Slot slot={item} key={idx}/> )
+                    this.state.slots.map((item,idx) => <Slot action={this.props.action} slot={item} key={idx}/> )
                     }
                 </tbody>
             </Table>
