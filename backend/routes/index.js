@@ -3,6 +3,7 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const nodemailer = require("nodemailer");
 
+//student-registration
 router.post('/register', (req,res,next) =>{
     let tempUser =  new User(req.body);
     console.log(req.body);
@@ -35,6 +36,7 @@ var transporter = nodemailer.createTransport({
 
 });
 
+//user-login
 router.post('/login',(req,res)=>{
     User.findOne({email: req.body.username})
     .then(user => {

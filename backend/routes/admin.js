@@ -4,6 +4,7 @@ var Batch = require('../models/batch');
 var Job = require('../models/job');
 const User = require('../models/user');
 
+//add-new-slot
 router.post("/addSlot", function(req, res) {
     console.log(req.body.time)
     var tempBatch = new Batch(
@@ -23,6 +24,7 @@ router.post("/addSlot", function(req, res) {
     })
 });
 
+//view-slots
 router.get("/viewslots", (req, res) => {
     Batch.find()
     .then(batches => {
@@ -33,6 +35,7 @@ router.get("/viewslots", (req, res) => {
     })
 });
 
+//delete-existing-slot
 router.post("/deleteslot", (req, res) => {
     // console.log(req)
     var batch_id = req.body.batchID
@@ -50,6 +53,7 @@ router.post("/deleteslot", (req, res) => {
     })
 })
 
+//get-list-of-jobs
 router.get("/getJobs", (req, res) => {
     Job.find()
     .then(jobs => {
@@ -60,6 +64,7 @@ router.get("/getJobs", (req, res) => {
     })    
 })
 
+//list-of-alloted-teachers
 router.post("/allotTeachers", (req, res) => {
     Batch.find({noOfStudent : 15})
     .then(batches => {

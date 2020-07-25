@@ -5,6 +5,7 @@ const job = require('../models/job');
 const mongoose = require('mongoose');
 const ObjectId = require('mongodb').ObjectID;
 
+//add-new-job
 router.post('/addjob', (req,res,next) =>{
     let tempJob =  new Job(req.body);
     console.log(req.body);
@@ -18,6 +19,7 @@ router.post('/addjob', (req,res,next) =>{
     })
 });
 
+//get-list-of-jobs
 router.get("/getJobs", (req, res) => {
     Job.find()
     .then(jobs => {
