@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Card, Container, CardDeck } from 'react-bootstrap'
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 
@@ -78,70 +79,63 @@ class Register extends Component{
 
     render(){
         return(
-            <div className="Registration">
-            <h1> Register </h1> 
-                <form onSubmit={this.onSubmit}>
-              <div>
-                <div className="fields">
-                  <p>Name </p>
-                  <input
+          <div className="Registration">
+              <h1> Register </h1> 
+              <Form onSubmit={this.onSubmit}>
+                <Form.Group controlId="formBasicName">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control 
                     type="text"
                     value={this.state.name}
                     name="Name"
-                    onChange={this.handleOnChangeName}
-                  />
-                  
-                </div> <div className="fields">
-                  <p>Username</p>
-                  <input
+                    onChange={this.handleOnChangeName} />
+                </Form.Group>
+
+                <Form.Group controlId="formBasicUsername">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control 
                     type="email"
                     value={this.state.username}
                     name="Username"
-                    onChange={this.handleOnChangeUsername}
-                  />
-                </div>
-                <div className="fields">
-                  <p> Password </p>
-                  {' '}
-                  <input
+                    onChange={this.handleOnChangeUsername} />
+                </Form.Group>
+
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                    {' '}
+                  <Form.Control 
                     type="password"
                     value={this.state.password}
                     name="Password"
                     onChange={this.handleOnChangePassword}
                     autoComplete="password"
-                    required
-                  />
-                </div>
-                <div className="fields">
-                  <p> Category </p>
-                  <input
-                    type="text"
+                    required/>
+                </Form.Group>
+
+                <Form.Group controlId="formBasicCategory">
+                  <Form.Label>Category</Form.Label>
+                  <Form.Control 
+                     type="text"
                     value={this.state.category}
                     name="Category"
-                    onChange={this.handleOnChangeCategory}
-                  />
-                </div>
-                <div className="fields">
-                  <p> Skills </p>
-                  <input
+                    onChange={this.handleOnChangeCategory} />
+                </Form.Group>
+
+                <Form.Group controlId="formBasicSkill">
+                  <Form.Label>Skills</Form.Label>
+                  <Form.Control 
                     type="text"
                     value={this.state.skills}
                     name="Skills"
-                    onChange={this.handleOnChangeSkills}
-                  />
-                </div>
-                <div className="buttons">
-                  <button
-                    type="submit"
-                    className="btn btn-primary"
-                  >
-                   REGISTER
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-
+                    onChange={this.handleOnChangeSkills} />
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                  Register
+                </Button>
+      
+           </Form>
+        </div>    
+ 
         )
     }
 
