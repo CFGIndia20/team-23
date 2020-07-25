@@ -20,7 +20,7 @@ class Main extends React.Component{
     
     render(){
         const currentUser = this.props.currentUser;
-        return this.checkCategoryAndRedirect(currentUser);
+        return currentUser ? this.checkCategoryAndRedirect(currentUser) : <Redirect to="/login"/>
     }
 
 }   
