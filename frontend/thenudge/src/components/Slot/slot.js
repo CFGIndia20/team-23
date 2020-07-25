@@ -1,12 +1,20 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
+
+
+
 
 
 const Slot = (props) => (
     <tr>
-        <td>1</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td>{props.slot.time}</td>
+        <td>{props.slot.noOfStudent}</td>
+        <td>
+            <span style={{display:"inline"}}><Button hidden={!props.slot.isFull}>Allocate Teacher</Button>
+            <Button>Delete</Button></span>
+        
+        </td>
+        
     </tr>
 )
 
