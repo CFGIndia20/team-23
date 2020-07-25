@@ -1,11 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux';
-import TestBlock from './TestBlock/testblock.component';
 
 
 class Main extends React.Component{
 
-    checkCategoryAndRedirect(currentUser){
+    checkCategoryAndRedirect(currentUser, history){
         switch(currentUser.category){
             case 'student':
                 history.push('/student')
@@ -20,7 +19,8 @@ class Main extends React.Component{
     
     render(){
         const currentUser = this.props.currentUser;
-        return this.checkCategoryAndRedirect(currentUser);
+        const history = this.props
+        return this.checkCategoryAndRedirect(currentUser,history);
     }
 
 }   
