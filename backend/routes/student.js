@@ -31,7 +31,8 @@ router.post("/allotSlot", function(req, res){
         _id: req.body.id,
         isFull: false
     },{
-        $inc:{noOfStudent : 1}
+       
+        $inc : {noOfStudent : 1}
     })
     .then(
         res.status(200).send("Slot Booked")
