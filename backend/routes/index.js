@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/user')  
 const bcrypt = require('bcryptjs');
-const nodemailer = require('nodemailer');
-// const batch = require('../models/batch');
 
 router.post('/register', (req,res,next) =>{
     let tempUser =  new User(req.body);

@@ -14,6 +14,7 @@ import Login from './components/login'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Recruiter from './pages/Recruiter/recruiter';
+import ChooseSlot from './components/ChooseSlot/ChooseSlot';
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
             <Route exact path="/error" component={ErrorPage}/>
             <Route exact path="/MakeSlots" component={MakeSlots}/>
             <Route exact path="/login" component={Login}/>
-            <Route exact path="/Recruiter" component={Recruiter}/>        
+            <Route exact path="/Recruiter" component={Recruiter}/>
+            <Route exact path="/chooseSlot" component={ChooseSlot}/>        
       </Switch>
       <Footer/>
     </div>

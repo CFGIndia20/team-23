@@ -5,7 +5,7 @@ var Batch = require('../models/batch');
 var Job = require('../models/job');
 
 //send available slot
-router.post("/displayAvailBatch", function(req, res) {
+router.get("/displayAvailBatch", function(req, res) {
     Batch.find({ isFull : false })
     .then(slot => {
         console.log("Slot info", slot)
@@ -25,24 +25,33 @@ router.post("/displayAvailBatch", function(req, res) {
 
 });
 
-//alots student to batch
-router.post("/allotSlot", function(req, res){
+//alots student to batch.takes batch id
+router.post("/allotSlot/:id", function(req, res){
     Batch.updateOne({
-        _id: req.body.id,
+        _id: ObjectId(req.param.id),
         isFull: false
     },{
-       
         $inc : {noOfStudent : 1}
-    })
+    },(err,res)=>{
+        if(res){
+
+            User.updateOne({ email: req.body.email}
+                ,{ $set: {status : "Approved" },
+                    $push: {batch : res._id}
+                })
+        }
+
+    })    
+    
     .then(
         res.status(200).send("Slot Booked")
     )
     .catch(err =>res.status(400).send(err))
 });
 
-//display available job..//false if no jobs...//true if jobs
-router.post("/displayAvailJob", function(req, res) {
-    User.findOne({ email: req.body.email})
+//display available job..
+router.post("/displayAvailJob/:email", function(req, res) {
+    User.findOne({ email: req.params.email})
     .then(user => {
         console.log("user",user);
         Batch.findOne({
@@ -66,5 +75,29 @@ router.post("/displayAvailJob", function(req, res) {
 
 
 });
+
+router.post("/applyJob/:email/:jobid", function(req, res) {
+    User.findOne({ email: req.params.email})
+    .then(user => {
+        console.log("user",user);
+        Job.updateOne({
+            _id : req.params.jobid
+        },{
+            $push : {students : user._id}
+        },(err, result)=>{
+            if(result){
+               res.send(200).send("Applied Successfully") 
+            }
+            else{
+                res.send(400).send("Couldn't apply successefully")
+            }
+        }
+        )
+       
+    })
+
+
+});
+
 
 module.exports = router;

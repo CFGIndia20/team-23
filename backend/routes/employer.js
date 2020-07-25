@@ -21,7 +21,7 @@ router.post('/addjob', (req,res,next) =>{
 router.get("/getJobs", (req, res) => {
     Job.find()
     .then(jobs => {
-        res.status(400).json(jobs)
+        res.status(200).json(jobs)
     })
     .catch(err =>{
         res.status(400).send(err)
