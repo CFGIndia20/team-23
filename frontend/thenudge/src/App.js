@@ -10,6 +10,7 @@ import Header from './components/Header/header';
 import Main from './pages/mainpage'
 import Footer from './components/Footer/footer'
 import MakeSlots from './components/MakeSlots/makeSlots'
+import Login from './components/login'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -25,6 +26,7 @@ function App() {
 						<Route exact path="/teacher" component={Teacher} />
             <Route exact path="/error" component={ErrorPage}/>
             <Route exact path="/MakeSlots" component={MakeSlots}/>
+            <Route exact path="/login" component={Login}/>
             
       </Switch>
       <Footer/>

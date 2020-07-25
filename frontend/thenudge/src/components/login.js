@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import {connect} from 'react-redux'
 import { setCurrentUser } from '../redux/user/user.actions';
+import serverLink from '../serverlink';
 
 class Login extends Component{
 
@@ -37,7 +38,7 @@ class Login extends Component{
           password: this.state.password,
         };
 
-        axios.post('http://localhost:3000/login',data)
+        axios.post(`${serverLink}/login`,data)
         .then(res => {
           if(res.status === 200){
             console.log(res.data)
