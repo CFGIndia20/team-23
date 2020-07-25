@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import Slot from '../Slot/slot';
 import {Table} from 'react-bootstrap';
-import axios from 'axios';
 import serverLink from '../../serverlink';
 
 
