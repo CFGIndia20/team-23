@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Card, Container, CardDeck } from 'react-bootstrap'
 import axios from 'axios';
-import bcrypt from 'bcryptjs';
 
 
 
@@ -52,14 +51,11 @@ class Register extends Component{
       onSubmit = async e => {
         e.preventDefault ();
 
-        const password = this.state.password;
-        const salt = bcrypt.genSaltSync(10)
-        const hash = bcrypt.hashSync(password,salt)
 
         const data = {
           name: this.state.name,
           username: this.state.username,
-          password: hash,
+          password: this.state.password,
           category : this.state.category,
           skills : this.state.skills
         };

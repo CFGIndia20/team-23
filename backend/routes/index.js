@@ -1,35 +1,36 @@
-var express = require('express');
-var router = express.Router();
-var passport = require('passport');
+const router = require('express').Router();
+const User = require('../models/user')
+const bcrypt = require('bcryptjs')
 
-// For registering user
-router.post("/register", function(req, res) {
-    var newUser = new User(
-        {
-            name : req.body.username,
-            email : req.body.email,
-            skill: req.body.skill,
-            category: req.body.category
-        });
-    User.register(newUser, req.body.password, function(err, user) {
-        // we pass password as second argument because we dont need to store the password in the database.
-        if(err) {
-            res.status(404).send(err)
-        } else {
-            passport.authenticate("local")(req, res, function(){
-                res.status(200).send("Registration Successful");
-            });
-        }
-    });
+router.post('/register', (req,res,next) =>{
+    let tempUser =  new User(req.body);
+    tempUser.save()
+    .then(reg => {
+        res.status(200).send("Registration Success");
+    })
+    .catch(err =>{
+        res.status(400).send(err)
+    })
 });
 
-
-// Login Check
-router.post("/login", passport.authenticate("local", {
-    successRedirect : "/campgrounds",
-    failureRedirect : "/login"
-}),function(req, res) {
-
-}); 
+router.post('/login',(req,res)=>{
+    User.findOne({username: req.body.username})
+    .then(user => {
+        // console.log("User info", user)
+        if(!user){
+            res.status(850).send("User Not Found")
+        }
+        else{
+            // console.log("User from login",user)
+            bcrypt.compare(req.body.password, user.password)
+            .then(
+                passwordMatch => passwordMatch ? res.status(200).json(user) : res.status(500).send("No record found")
+                )
+            .catch(err =>res.status(400).send(err))
+        }
+        ;
+    })
+    
+})
 
 module.exports = router;
