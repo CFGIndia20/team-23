@@ -40,7 +40,7 @@ class Recruiter extends Component{
     const data = {
       companyName: this.state.cname,
       skillReq: this.state.skill,
-      seatavailable: this.state.seat,
+      seatAsvailable: this.state.seat,
     };
 
     axios.post(`${serverLink}/recruiter`, data)
