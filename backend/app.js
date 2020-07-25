@@ -10,6 +10,7 @@ const expressSession = require("express-session")
 // var Project = require("./Project.js")
 // var Comment = require("./Comment.js")
 const indexRoutes = require("./routes/index");
+const adminRoutes = require("./routes/admin");
 
 var app = express()
 
@@ -45,6 +46,7 @@ db.once('open', ()=>{
 })
 
 app.use("/", indexRoutes);
+app.use("/admin", adminRoutes);
 
 app.listen(process.env.PORT || 3000,"127.0.0.1",function(){
 	console.log("Server is Running.")

@@ -4,7 +4,7 @@ var passport = require('passport');
 var User = require('../models/user');
 
 // For registering user
-router.post("/register", function(req, res) {
+router.post("/addTeacher", function(req, res) {
     var newUser = new User(
         {
             name : req.body.username,
