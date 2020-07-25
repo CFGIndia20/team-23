@@ -8,8 +8,11 @@ import { resetCurrentUser } from '../../redux/user/user.actions';
 
 class Header extends React.Component {
 
-    handleSignOut =() =>{
-        this.props.resetCurrentUser()
+    handleSignOut =(reset) =>{
+        reset()
+        this.props.history.push('/')
+        
+
     }
 
     render() {
@@ -25,7 +28,7 @@ class Header extends React.Component {
                     />{' '}
       The Nudge
     </Navbar.Brand>
-    <Button style={{ float: "right" }} variant="primary" onClick={()=>this.props.resetCurrentUser()}>Sign Out</Button>
+    <Button style={{ float: "right" }} variant="primary" onClick={()=>this.handleSignOut(this.props.resetCurrentUser)}>Sign Out</Button>
                 
             </Navbar>
 

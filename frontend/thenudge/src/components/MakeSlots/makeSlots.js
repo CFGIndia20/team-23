@@ -9,7 +9,7 @@ class MakeSlots extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            startTime: '',
+            time: '',
             onSuccess: false,
             link : "www.trial.com"   //dummy link
         }
@@ -24,7 +24,8 @@ class MakeSlots extends React.Component {
         e.preventDefault()
 
         const data = {
-            time : "11:00AM - 12:00PM",
+            time : this.state.time,
+            // time : "11:00AM - 12:00PM",
             link : this.state.link
         }
 
