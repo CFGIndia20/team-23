@@ -8,7 +8,6 @@ router.post("/addslot", function(req, res) {
         {
             time : req.body.time
         });
-    console.log(req.body.time);
     tempBatch.save()
     .then(reg => {
         res.status(200).send("Slot Created Successfully");
