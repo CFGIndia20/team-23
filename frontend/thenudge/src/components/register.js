@@ -13,6 +13,7 @@ class Register extends Component{
             username: '',
             password: '',
             category : '',
+            skills : '',
           };
 
     }
@@ -40,6 +41,12 @@ class Register extends Component{
           category: e.target.value,
         });
       };
+
+        handleOnChangeSkills = e => {
+        this.setState ({
+          skills: e.target.value,
+        });
+      };
     
       onSubmit = async e => {
         e.preventDefault ();
@@ -53,6 +60,7 @@ class Register extends Component{
           username: this.state.username,
           password: hash,
           category : this.state.category,
+          skills : this.state.skills
         };
 
         axios.post('http://localhost:3000/register', data)
@@ -63,6 +71,7 @@ class Register extends Component{
               username: '',
               password: '',
               category: '',
+              skills: '',
             })
       };
 
@@ -85,7 +94,7 @@ class Register extends Component{
                 </div> <div className="fields">
                   <p>Username</p>
                   <input
-                    type="text"
+                    type="email"
                     value={this.state.username}
                     name="Username"
                     onChange={this.handleOnChangeUsername}
@@ -104,15 +113,23 @@ class Register extends Component{
                   />
                 </div>
                 <div className="fields">
-                  <p> Password </p>
+                  <p> Category </p>
                   <input
                     type="text"
                     value={this.state.category}
-                    name="Password"
+                    name="Category"
                     onChange={this.handleOnChangeCategory}
                   />
                 </div>
-
+                <div className="fields">
+                  <p> Skills </p>
+                  <input
+                    type="text"
+                    value={this.state.skills}
+                    name="Skills"
+                    onChange={this.handleOnChangeSkills}
+                  />
+                </div>
                 <div className="buttons">
                   <button
                     type="submit"
