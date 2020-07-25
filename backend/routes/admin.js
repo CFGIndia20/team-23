@@ -3,7 +3,6 @@ var router = express.Router();
 var Batch = require('../models/batch');
 var Job = require('../models/job');
 const User = require('../models/user');
-var ObjectId = require('mongodb').ObjectId;
 
 router.post("/addSlot", function(req, res) {
     console.log(req.body.time)
@@ -35,13 +34,13 @@ router.get("/viewslots", (req, res) => {
 });
 
 router.post("/deleteslot", (req, res) => {
-    console.log(req)
+    // console.log(req)
     var batch_id = req.body.batchID
-    console.log(req.body)
-    console.log("Batch ID : " + batch_id);
-    var o_bid = new ObjectId(batch_id)
-    console.log(o_bid)
-    Batch.findByIdAndDelete({_id: o_bid})
+    // console.log(req.body)
+    // console.log("Batch ID : " + batch_id);
+    // var o_bid = new ObjectId(batch_id)
+    // console.log(o_bid)
+    Batch.findByIdAndDelete({_id: batch_id})
     .then(batch => {
         console.log(batch);
         res.status(200).send("Slot Deleted")

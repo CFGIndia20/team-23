@@ -28,7 +28,7 @@ router.get("/displayAvailBatch", function(req, res) {
 //alots student to batch.takes batch id
 router.post("/allotSlot/:id", function(req, res){
     Batch.updateOne({
-        _id: ObjectId(req.param.id),
+        _id: req.param.id,
         isFull: false
     },{
         $inc : {noOfStudent : 1}
@@ -95,7 +95,6 @@ router.post("/applyJob/:email/:jobid", function(req, res) {
         )
        
     })
-
 
 });
 
