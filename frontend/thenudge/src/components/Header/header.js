@@ -3,8 +3,7 @@ import { Navbar, Button } from 'react-bootstrap';
 import logo from '../../../src/logo.svg';
 import {connect} from 'react-redux'
 import { resetCurrentUser } from '../../redux/user/user.actions';
-import {withRouter} from 'react-router-dom'
-import {compose} from 'redux'
+
 
 
 class Header extends React.Component {
@@ -15,7 +14,6 @@ class Header extends React.Component {
 
     }
 
-    renderSignOut = () => (this.props.currentUser ? (<Button style={{ float: "right" }} variant="primary" onClick={()=>resetCurrentUser}>Sign Out</Button>):<span/>)
 
 
     render() {
@@ -31,7 +29,7 @@ class Header extends React.Component {
                     />{' '}
       React Bootstrap
     </Navbar.Brand>
-                {this.renderSignOut}
+    <Button style={{ float: "right" }} variant="primary" onClick={()=>this.props.resetCurrentUser()}>Sign Out</Button>
                 
             </Navbar>
 

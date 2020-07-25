@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Slot from '../Slot/slot';
 import {Table} from 'react-bootstrap';
+import serverLink from '../../serverlink';
+import Jobs from '../../components/Jobs/jobs';
 
 
 class ViewJobs extends React.Component {
@@ -14,7 +16,7 @@ class ViewJobs extends React.Component {
     }
 
     componentDidMount() {
-        axios.get().then(
+        axios.get(`${serverLink}/employer/getJobs`).then(
             res => {
                 this.setState({ jobs: res.data })
             }
@@ -27,14 +29,15 @@ class ViewJobs extends React.Component {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Company Name</th>
-                        <th>Skills Required</th>
-                        <th>Number of Slots</th>
+                        <th>Time SLot</th>
+                        <th>No of Students</th>
+                        <th>Action Buttons</th>
+                        <th>Trial</th>
+
                     </tr>
                 </thead>
                 <tbody>{
-                    this.state.jobs.map((item,idx) => <Slot slot={item} key={idx}/> )
+                    this.state.jobs.map((item,idx) => <Jobs job={item} key={idx}/> )
                     }
                 </tbody>
             </Table>
