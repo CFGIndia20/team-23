@@ -3,6 +3,7 @@ import {Tab, Tabs} from 'react-bootstrap';
 import ViewSlots from '../../components/ViewSlots/ViewSlots';
 import ChooseSlot from '../../components/ChooseSlot/ChooseSlot';
 import { Redirect } from 'react-router-dom';
+import {connect} from 'react-redux'
 
 
 const Student = (props) => ((props.currentUser.category=='Student' ? (
@@ -21,4 +22,5 @@ const mapStateToProps = ({ user }) => ({
     currentUser: user.currentUser,
 });
 
-export default Student
+
+export default connect(mapStateToProps)(Student)
