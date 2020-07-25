@@ -133,6 +133,7 @@ class Register extends Component {
               <option>Student</option>
               <option>Teacher</option>
               <option>Recriuter</option>
+              <option>Admin</option>
             </Form.Control>
           </Form.Group>
 

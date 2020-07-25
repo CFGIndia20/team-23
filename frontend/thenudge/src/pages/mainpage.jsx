@@ -1,26 +1,26 @@
 import React from 'react'
 import {connect} from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 
 class Main extends React.Component{
 
     checkCategoryAndRedirect(currentUser, history){
         switch(currentUser.category){
-            case 'student':
-                history.push('/student')
-            case 'admin':
-                history.push('/admin')
-            case 'teacher':
-                history.push('/teacher')
+            case 'Student':
+                return <Redirect to="/student"/>
+            case 'Admin':
+                return <Redirect to="/admin"/>
+            case 'Teacher':
+                return <Redirect to="/teacher"/>
             default :
-                history.push('/error')
+                return  <Redirect to="/error"/>
         }
     }
     
     render(){
         const currentUser = this.props.currentUser;
-        const history = this.props
-        return this.checkCategoryAndRedirect(currentUser,history);
+        return this.checkCategoryAndRedirect(currentUser);
     }
 
 }   

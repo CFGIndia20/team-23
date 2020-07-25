@@ -1,3 +1,3 @@
-const serverLink = "https://af9d8d422082.ngrok.io";
+const serverLink = "http://09e8b579950b.ngrok.io";
 
 export default serverLink;
