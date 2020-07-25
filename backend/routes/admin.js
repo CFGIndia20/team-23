@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 var Batch = require('../models/batch');
 var Job = require('../models/job');
+const User = require('../models/user');
 
-router.post("/addslot", function(req, res) {
+router.post("/addSlot", function(req, res) {
     var tempBatch = new Batch(
         {
             time : req.body.time
@@ -44,6 +45,55 @@ router.get("/getJobs", (req, res) => {
     })
     .catch(err =>{
         res.status(400).send(err)
+    })    
+})
+
+router.post("/allotTeachers", (req, res) => {
+    Batch.find({noOfStudent : 15})
+    .then(batches => {
+        if(!batches) {
+            res.send(400).send("No Batches Available for allotment")
+        } else {
+            batches.forEach((batch) => {
+                flag = false;
+                User.find({category : 'Teacher'})
+                .then(users => {
+                    users.forEach((user) => {
+                        user.batch.forEach((user_batch) => {
+                            Batch.findById(user_batch.batchId)
+                            .then(teacher_batch => {
+                                if(teacher_batch.time === batch.time) {
+                                    continue;
+                                } else {
+                                    if(user.noOfSlotsAlloted + 1 > 4) {
+                                        continue;
+                                    } else {
+                                        batch.teacher = user._id;
+                                        user.noOfSlotsAlloted = user.noOfSlotsAlloted + 1;
+                                        batch.save()
+                                        user.save()
+                                        flag = true;
+                                        break;
+                                    }
+                                }
+                            })
+                            .catch(err => {
+                                res.status(404).send(err)
+                            }) 
+                        })
+                        if(flag == true) {
+                            break;
+                        }
+                    })
+                })
+                .catch(err => {
+                    res.status(404).send(err);
+                })
+            })
+        }
+    })
+    .catch(err => {
+        res.status(404).send(err)
     })
 });
 
