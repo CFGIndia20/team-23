@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../models/user');
 var Batch = require('../models/batch');
 var Job = require('../models/job');
+var nodemailer = require('nodemailer');
 
 //send available slot
 router.get("/displayAvailBatch", function(req, res) {
@@ -32,20 +33,23 @@ router.post("/allotSlot/:id", function(req, res){
         isFull: false
     },{
         $inc : {noOfStudent : 1}
-    },(err,res)=>{
-        if(res){
 
-            User.updateOne({ email: req.body.email}
-                ,{ $set: {status : "Approved" },
-                    $push: {batch : res._id}
+    },(err,res1)=>{
+        if(res1){
+            Batch.update({ $eq : {noOfStudent : 15} },
+                {$set : { isFull: true}},
+                (err,res2)=>{
+                    User.updateOne({ email: req.body.email}
+                        ,{ $set: {status : "Approved" },
+                            $push: {batch : res2._id}
+                        },(err,res1)=>{
+                            res.status(200).json(res1)
+                        })
                 })
+        
         }
 
     })    
-    
-    .then(
-        res.status(200).send("Slot Booked")
-    )
     .catch(err =>res.status(400).send(err))
 });
 
@@ -98,6 +102,5 @@ router.post("/applyJob/:email/:jobid", function(req, res) {
 
 
 });
-
 
 module.exports = router;

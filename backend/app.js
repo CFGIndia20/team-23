@@ -20,6 +20,6 @@ app.use("/admin", require("./routes/admin"));
 app.use("/student", require("./routes/student"));
 app.use("/employer", require("./routes/employer"));
 
-app.listen(process.env.PORT || 3002,"127.0.0.1",function(){
+app.listen(process.env.PORT || 3000,"127.0.0.1",function(){
 	console.log("Server is Running.")
 })
