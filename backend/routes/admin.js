@@ -7,7 +7,11 @@ const User = require('../models/user');
 router.post("/addslot", function(req, res) {
     var tempBatch = new Batch(
         {
-            time : req.body.time
+            time : req.body.time,
+            link : req.body.link,
+            startDate : req.body.startDate,
+            endDate: new Date(req.body.startDate + 30*24*60*60000)
+
         });
     tempBatch.save()
     .then(reg => {
@@ -59,21 +63,27 @@ router.post("/allotTeachers", (req, res) => {
                 User.find({category : 'Teacher'})
                 .then(users => {
                     users.forEach((user) => {
+                        if(flag == true) {
+                            return;
+                        }
                         user.batch.forEach((user_batch) => {
+                            if(flag == true) {
+                                return;
+                            }
                             Batch.findById(user_batch.batchId)
                             .then(teacher_batch => {
                                 if(teacher_batch.time === batch.time) {
-                                    continue;
+                                    return;
                                 } else {
                                     if(user.noOfSlotsAlloted + 1 > 4) {
-                                        continue;
+                                        return;
                                     } else {
                                         batch.teacher = user._id;
                                         user.noOfSlotsAlloted = user.noOfSlotsAlloted + 1;
                                         batch.save()
                                         user.save()
                                         flag = true;
-                                        break;
+                                        return;
                                     }
                                 }
                             })
@@ -82,7 +92,7 @@ router.post("/allotTeachers", (req, res) => {
                             }) 
                         })
                         if(flag == true) {
-                            break;
+                            return;
                         }
                     })
                 })

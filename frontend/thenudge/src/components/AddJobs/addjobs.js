@@ -1,10 +1,12 @@
 import React from 'react';
-import {Tab, Tabs} from 'react-bootstrap';
+import {Form, Button, Tab, Tabs } from 'react-bootstrap';
+import axios from 'axios'
+import serverLink from '../../serverlink';
 // import MakeSlots from '../../components/MakeSlots/makeSlots';
 // import ViewSlots from '../../components/ViewSlots/ViewSlots';
 //import AddTeacherRecruiter from '../../components/AddTeacherRec/addTeacherRecruiter';
 
-class AddJobs extends Component{
+class AddJobs extends React.Component{
 
     constructor(props) {
     super(props)
