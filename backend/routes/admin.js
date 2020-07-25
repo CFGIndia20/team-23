@@ -4,7 +4,7 @@ var Batch = require('../models/batch');
 var Job = require('../models/job');
 const User = require('../models/user');
 
-router.post("/addSlot", function(req, res) {
+router.post("/addslot", function(req, res) {
     var tempBatch = new Batch(
         {
             time : req.body.time

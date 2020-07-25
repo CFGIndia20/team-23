@@ -25,4 +25,20 @@ router.get("/getJobs", (req, res) => {
     })
 });
 
+router.post('/editjob', (req, res) => {
+    const { skillReq, seatAvailable } = req.body;
+    const jobId = req.params.id;
+  
+    let job;
+    try {
+      job = Job.findById(jobId);
+    } catch (err) {
+        res.status(400).send(err)
+    }
+  
+    job.skillReq = skillReq;
+    job.seatAvailable = seatAvailable;
+    res.status(200).send("Job Updated Successfully");
+  });
+  
 module.exports = router;
