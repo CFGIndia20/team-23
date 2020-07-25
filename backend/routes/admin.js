@@ -2,9 +2,8 @@ var express = require('express');
 var router = express.Router();
 var Batch = require('../models/batch');
 var Job = require('../models/job');
-const job = require('../models/job');
 
-router.post("/addRoute", function(req, res) {
+router.post("/addslot", function(req, res) {
     var tempBatch = new Batch(
         {
             time : req.body.time
@@ -38,4 +37,15 @@ router.post("/deleteslot", (req, res) => {
         res.status(400).send(err)
     })
 })
+
+router.get("/getJobs", (req, res) => {
+    Job.find()
+    .then(jobs => {
+        res.status(400).json(jobs)
+    })
+    .catch(err =>{
+        res.status(400).send(err)
+    })
+});
+
 module.exports = router;
