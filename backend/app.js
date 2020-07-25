@@ -1,10 +1,12 @@
 const express = require("express")
 const mongoose =require("mongoose")
 const bodyParser = require("body-parser")
+const cors = require('cors')
 
 var app = express()
 
 app.use(bodyParser.json())
+app.use(cors())
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.gkf3j.mongodb.net/nudge?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true})
 const db = mongoose.connection

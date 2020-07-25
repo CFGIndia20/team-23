@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/user')  
 const bcrypt = require('bcryptjs');
-const batch = require('../models/batch');
+// const batch = require('../models/batch');
 
 router.post('/register', (req,res,next) =>{
     let tempUser =  new User(req.body);
@@ -11,6 +11,7 @@ router.post('/register', (req,res,next) =>{
         res.status(200).send("Registration Success");
     })
     .catch(err =>{
+        console.log(err);
         res.status(400).send(err)
     })
 });
