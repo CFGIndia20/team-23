@@ -1,0 +1,45 @@
+import React from 'react';
+import axios from 'axios';
+import Slot from '../Slot/slot';
+import {Table} from 'react-bootstrap';
+
+
+class ViewJobs extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            jobs : []
+        }
+    }
+
+    componentDidMount() {
+        axios.get().then(
+            res => {
+                this.setState({ jobs: res.data })
+            }
+        )
+            .catch(err => console.log(err))
+    }
+
+    render() {
+        return (
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Company Name</th>
+                        <th>Skills Required</th>
+                        <th>Number of Slots</th>
+                    </tr>
+                </thead>
+                <tbody>{
+                    this.state.jobs.map((item,idx) => <Slot slot={item} key={idx}/> )
+                    }
+                </tbody>
+            </Table>
+        )
+    }
+}
+
+export default ViewJobs
