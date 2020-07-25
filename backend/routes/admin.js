@@ -5,7 +5,10 @@ var Batch = require('../models/batch');
 router.post("/addRoute", function(req, res) {
     var tempBatch = new Batch(
         {
-            time : req.body.time
+            time : req.body.time,
+            startDate : req.body.startDate,
+            endDate: new Date(req.body.startDate + 30*24*60*60000)
+
         });
     console.log(req.body.time);
     tempBatch.save()
