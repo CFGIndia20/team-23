@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var Batch = require('../models/batch');
+var Job = require('../models/job');
+const job = require('../models/job');
 
 router.post("/addRoute", function(req, res) {
     var tempBatch = new Batch(
@@ -16,5 +18,8 @@ router.post("/addRoute", function(req, res) {
         res.status(400).send(err)
     })
 });
+
+
+
 
 module.exports = router;
