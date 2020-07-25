@@ -3,8 +3,12 @@ import {Tab, Tabs} from 'react-bootstrap';
 // import MakeSlots from '../../components/MakeSlots/makeSlots';
 // import ViewSlots from '../../components/ViewSlots/ViewSlots';
 //import AddTeacherRecruiter from '../../components/AddTeacherRec/addTeacherRecruiter';
+import axios from 'axios'
+import serverLink from '../../serverlink';
+import {Form, Button} from 'react-bootstrap';
 
-class Recruiter extends Component{
+
+class Recruiter extends React.Component{
 
     constructor(props) {
     super(props)
