@@ -1,7 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import Slot from '../Slot/slot';
 import {Table} from 'react-bootstrap';
+import axios from 'axios';
+import serverLink from '../../serverlink';
 
 
 class ViewSlots extends React.Component {
@@ -14,23 +15,26 @@ class ViewSlots extends React.Component {
     }
 
     componentDidMount() {
-        axios.get().then(
+        axios.get(`${serverLink}/admin/viewslots`)
+        .then(
             res => {
+                console.log(res.data)
                 this.setState({ slots: res.data })
             }
         )
-            .catch(err => console.log(err))
+        .catch(err => console.log(err))
     }
+
+    
 
     render() {
         return (
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                    <th>Time SLot</th>
+                        <th>No of Students</th>
+                        <th>Action Buttons</th>
                     </tr>
                 </thead>
                 <tbody>{
