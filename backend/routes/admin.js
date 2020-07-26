@@ -7,12 +7,13 @@ const User = require('../models/user');
 //add-new-slot
 router.post("/addSlot", function(req, res) {
     console.log(req.body.time)
+    startD = Date.now()
     var tempBatch = new Batch(
         {
             time : req.body.time,
             link : req.body.link,
-            startDate : req.body.startDate,
-            endDate: new Date(req.body.startDate + 4*30*24*60*60000),
+            startDate : startD,
+            endDate: new Date(startD + 4*30*24*60*60000),
             noOfStudent: Number(15)
         });
     tempBatch.save()
