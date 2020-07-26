@@ -4,11 +4,11 @@ var Batch = require('../models/batch');
 const nodemailer = require("nodemailer");
 
 //send available slot
-router.get("/viewslots", (req, res)  => {
+router.post("/viewslots", (req, res)  => {
     var teacherId = req.body.teacherId;
     Batch.find({ teacher : teacherId })
     .then(batches => {
-        res.status(400).send(batches)
+        res.status(200).send(batches)
     })
     .catch(err => res.status(400).send(err))
 });
