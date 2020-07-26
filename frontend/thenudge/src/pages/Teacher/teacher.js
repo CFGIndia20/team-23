@@ -9,7 +9,7 @@ class Teacher extends React.Component {
     constructor(props) {
     super(props)
    
-  }
+    }
     
 
     onSubmit = async e => {
@@ -18,7 +18,7 @@ class Teacher extends React.Component {
     }
 
 
-     componentDidMount() {
+    componentDidMount() {
         axios.get(`${serverLink}/viewslots`).then(
             res => {
                 this.setState({ slots: res.data })
@@ -30,7 +30,7 @@ class Teacher extends React.Component {
     render() {
         return (
             <Container>
-            
+
               <Table striped bordered hover>
                 <thead>
                     <tr>

@@ -4,7 +4,7 @@ import React from 'react'
 const StudentFileUpload = () => (
       <Form>
       <Form.Group>
-        <Form.File id="exampleFormControlFile1" label="Example file input" />
+      <Form.File id="exampleFormControlFile1" label="Example file input" />
       </Form.Group>
       </Form>
     )

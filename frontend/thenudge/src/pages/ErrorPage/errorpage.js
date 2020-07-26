@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const ErrorPage = () => (
     <div>
     <h3>404 page not found</h3>

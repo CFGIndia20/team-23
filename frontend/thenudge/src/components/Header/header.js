@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 import { resetCurrentUser } from '../../redux/user/user.actions';
 
 
-
 class Header extends React.Component {
 
     handleSignOut =() =>{
@@ -23,12 +22,15 @@ class Header extends React.Component {
                         height="30"
                         className="d-inline-block align-top"
                     />{' '}
-      The Nudge
-    </Navbar.Brand>
-    <Button style={{ float: "right" }} variant="primary" onClick={()=>this.props.resetCurrentUser()}>Sign Out</Button>
+            The Nudge
+            </Navbar.Brand>
+            <Button style={{ float: "left" }} 
+            variant="primary" 
+            onClick={()=>this.props.resetCurrentUser()}>
+            Sign Out
+            </Button>
                 
             </Navbar>
-
         )
     }
 } 

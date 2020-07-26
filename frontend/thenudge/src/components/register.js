@@ -7,8 +7,6 @@ import serverLink from '../serverlink';
 import {withRouter} from 'react-router-dom';
 
 
-
-
 class Register extends Component {
 
   constructor(props) {
