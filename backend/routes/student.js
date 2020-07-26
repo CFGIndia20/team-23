@@ -9,21 +9,23 @@ var nodemailer = require('nodemailer');
 router.get("/displayAvailBatch", function(req, res) {
     Batch.find({ isFull : false })
     .then(slot => {
-        console.log("Slot info", slot)
-        if(!slot){
-            res.status(404).send("Slot Not Found")
-        }
-        else{
-            console.log("Slot",slot)
+        // console.log("Slot info", slot)
+        // if(!slot){
+        //     res.status(404).send("Slot Not Found")
+        // }
+        // else{
+        //     console.log("Slot",slot)
             
-            .then(
+        //     .then(
                 res.status(200).json(slot)
-            )
-            .catch(err =>res.status(400).send(err))
-        }
+        //     )
+        //     .catch(err =>res.status(400).send(err))
+        // }
        
-    });
-
+    })
+    .catch(err => {
+        res.status(400).send(err)
+    })
 });
 
 //alots student to batch.takes batch id
@@ -68,14 +70,41 @@ router.post("/allotSlot/:id", function(req, res){
         subject: "Slot Alloted", // Subject line
         text: "Dear Student, your time slot will be .", // plain text body
     });
+
+    // console.log(req.params.id)
+    // Batch.findOneAndUpdate({_id: req.params.id})
+    // .then(batch => {
+    //     console.log(batch)
+    //     var flag = false;
+    //     if(batch.noOfStudents + 1 == 15) {
+    //         flag = true;   
+    //     }
+    //     var bns = batch.noOfStudents + 1;
+    //     batch.update({noOfStudents : bns}, {isFull : flag})
+    //     console.log(req.body.email)
+    //     User.find({email: req.body.email})
+    //     .then(user => {
+    //         console.log(user)
+    //         // user.status = "Approved"
+    //         // user.batch.push(req.params.id)
+    //         user.update({status : "Approved"}, { $push: {batch : req.params.id}})
+    //         res.status(200).json(batch)
+    //     })
+    //     .catch(err => {
+    //         res.status(404).send(err);
+    //     })
+    // })
+    // .catch(err => {
+    //     res.status(404).send(err);
+    // })
 });
 
 //display available job..
 router.post("/displayAvailJob/:email", function(req, res) {
-    User.findOne({ email: req.params.email})
+    User.find({ email: req.params.email})
     .then(user => {
         console.log("user",user);
-        Batch.findOne({
+        Batch.find({
             _id : user.batch.batchId[0]
         })
         .then(batch =>{
@@ -92,9 +121,13 @@ router.post("/displayAvailJob/:email", function(req, res) {
                 res.status(404).send("No Jobs Available before end of course.")
             }
         })
+        .catch(err => {
+            res.status(404).send(err)
+        })
     })
-
-
+    .catch(err => {
+        res.status(400).send(err)
+    })
 });
 
 router.post("/applyJob/:email/:jobid", function(req, res) {

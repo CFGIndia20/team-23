@@ -7,13 +7,14 @@ const User = require('../models/user');
 //add-new-slot
 router.post("/addSlot", function(req, res) {
     console.log(req.body.time)
+    startD = Date.now()
     var tempBatch = new Batch(
         {
             time : req.body.time,
             link : req.body.link,
-            startDate : req.body.startDate,
-            endDate: new Date(req.body.startDate + 4*30*24*60*60000)
-
+            startDate : startD,
+            endDate: new Date(startD + 4*30*24*60*60000),
+            noOfStudent: Number(15)
         });
     tempBatch.save()
     .then(reg => {
@@ -68,23 +69,28 @@ router.get("/getJobs", (req, res) => {
 router.post("/allotTeachers", (req, res) => {
     Batch.find({noOfStudent : 15})
     .then(batches => {
+        console.log("Batches: " + batches)
         if(!batches) {
             res.send(400).send("No Batches Available for allotment")
         } else {
             batches.forEach((batch) => {
+                console.log("Batch : " + batch)
                 flag = false;
                 User.find({category : 'Teacher'})
                 .then(users => {
+                    console.log("Users : ", users)
                     users.forEach((user) => {
                         if(flag == true) {
                             return;
                         }
                         user.batch.forEach((user_batch) => {
+                            console.log(user_batch)
                             if(flag == true) {
                                 return;
                             }
                             Batch.findById(user_batch.batchId)
                             .then(teacher_batch => {
+                                console.log("Teacher_Batch : " + teacher_batch)
                                 if(teacher_batch.time === batch.time) {
                                     return;
                                 } else {

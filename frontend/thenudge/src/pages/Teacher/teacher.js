@@ -15,6 +15,7 @@ class Teacher extends React.Component {
         slots : []
     }
    
+<<<<<<< HEAD
   }
     
 
@@ -26,14 +27,22 @@ class Teacher extends React.Component {
             }
         })
 
+=======
+>>>>>>> 843ed11268a70d74daf09665b87cbeb78530e56d
     }
+    
 
+<<<<<<< HEAD
 
      componentDidMount() {
         const data = {
             teacherId : this.props.currentUser._id
         }
         axios.post(`${serverLink}/teacher/viewslots`).then(
+=======
+    componentDidMount() {
+        axios.get(`${serverLink}/viewslots`).then(
+>>>>>>> 843ed11268a70d74daf09665b87cbeb78530e56d
             res => {
                 console.log(res.data)
                 this.setState({ slots: res.data })
@@ -59,7 +68,7 @@ class Teacher extends React.Component {
                 </tbody>
               </Table>
 
-                <Button onSubmit={this.onSubmit}  variant="primary" type="submit">
+                <Button onSubmit variant="primary" type="submit">
                     Notify Admin
                 </Button>  
  

@@ -7,7 +7,6 @@ import compose from 'recompose/compose';
 import {withRouter} from 'react-router-dom';
 
 
-
 class Header extends React.Component {
 
     handleSignOut =(reset) =>{
@@ -28,12 +27,16 @@ class Header extends React.Component {
                         height="30"
                         className="d-inline-block align-top"
                     />{' '}
-      The Nudge
-    </Navbar.Brand>
-    <Button hidden={!this.props.currentUser} variant="primary" onClick={()=>this.handleSignOut(this.props.resetCurrentUser)}>Sign Out</Button>
+
+            The Nudge
+            </Navbar.Brand>
+            <Button style={{ float: "left" }} 
+            variant="primary" 
+            onClick={()=>this.props.resetCurrentUser()}>
+            Sign Out
+            </Button>
                 
             </Navbar>
-
         )
     }
 } 
