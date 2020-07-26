@@ -83,9 +83,9 @@ class Register extends Component {
     axios.post(`${serverLink}/register`, data)
       .then(res => {
         console.log(res.data)
-        if(this.state.category === 'Student'){
-          this.props.history.push('/chooseSlot')
-        }
+          if(!this.props.noRedirect){
+          this.props.history.push('/login')
+          }
       });
 
     
@@ -130,7 +130,7 @@ class Register extends Component {
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Select Category</Form.Label>
             <Form.Control as="select" onChange={this.handleOnChangeCategory}>
-              <option>Student</option>
+              <option hidden={!this.props.student}>Student</option>
               <option>Teacher</option>
               <option>Recriuter</option>
               <option>Admin</option>

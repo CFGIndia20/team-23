@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tab, Tabs, Table, Button, } from 'react-bootstrap';
-import ViewSlots from '../../components/ViewSlots/ViewSlots';
+// import ViewSlots from '../../components/ViewSlots/ViewSlots';
 import ChooseSlot from '../../components/ChooseSlot/ChooseSlot';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -18,8 +18,8 @@ class Student extends React.Component {
     }
 
     handleApply = (_id) => {
-        axios.post(`${serverLink}/applyJob/${this.props.currentUser.username}/${_id}`).
-        then(res => console.log(res))
+        axios.post(`${serverLink}/applyJob/${this.props.currentUser.username}/${_id}`)
+        .then(res => console.log(res))
         .catch(err => console.log(err))
     }
 
@@ -32,7 +32,7 @@ class Student extends React.Component {
 
     render() {
         return (
-            ((this.props.currentUser.category == 'Student' ? (
+            ((this.props.currentUser.category === 'Student' ? (
                 <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                     <Tab eventKey="viewJobs" title="View Jobs">
                         {

@@ -5,24 +5,21 @@ import { Form, Button } from 'react-bootstrap';
 import bcrypt from 'bcryptjs';
 import serverLink from '../../serverlink';
 import ViewSlots from '../../components/ViewSlots/ViewSlots'
+import {connect} from 'react-redux';
+import compose from 'recompose/compose';
 
 class ChooseSlot extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-<<<<<<< HEAD
       startTime: '',
       slots: []
 
-=======
-         startTime: ''
->>>>>>> 7470da33b2e8239446fd9820d800155140058860
     };
 
   }
 
-<<<<<<< HEAD
 
   componentDidMount() {
     axios.get(`${serverLink}/student/displayAvailBatch`)
@@ -33,8 +30,11 @@ class ChooseSlot extends Component {
   }
 
   handleChoose = (_id) => {
+    const data = {
+      email : this.props.currentUser.email
+    }
     axios.post(`${serverLink}/student/allotSlot/${_id}`).
-    then(res => console.log(res.status))
+    then(res => console.log(res.data))
     .catch(err => console.log(err))
   }
 
@@ -42,21 +42,6 @@ class ChooseSlot extends Component {
   handleTimePickerChange = (e) => {
     console.log(e.target.value)
     this.setState({ time: e.target.value })
-=======
-     //function to set time slot choosen
-     handleTimePickerChange = (e) => {
-        console.log(e.target.value)
-        this.setState({time:e.target.value})
-        
-    }
-
-    //function to handle post route for alloting slots
-    handleSubmit = async(e) => {
-        e.preventDefault();
-        const data ={
-            time : this.startTime
-        }
->>>>>>> 7470da33b2e8239446fd9820d800155140058860
 
   }
 
@@ -112,6 +97,10 @@ class ChooseSlot extends Component {
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
 
-export default ChooseSlot;
+
+export default connect(mapStateToProps)(ChooseSlot);
 

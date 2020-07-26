@@ -20,7 +20,7 @@ class Admin extends React.Component {
                     <Tab eventKey="addTeacher" title="Add Teacher/Recruiter">
                         <AddTeacherRecruiter />
                     </Tab>
-                    <Tab eventKey="addTeacher" title="Add Teacher/Recruiter">
+                    <Tab eventKey="viewJobs" title="View Jobs">
                         <ViewJobs />
                     </Tab>
                 </Tabs>
