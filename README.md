@@ -45,4 +45,5 @@ Procedure to run the node server:
     4. Having a Single portal for both Training and Placement Procedure
     5. Students alloted to the batches based on First Come first Serve Basis
   
+  The Project Details can be found at : https://codeforgood.bemyapp.com/#/projects/5f19d7a06e0e85001b2e60be
 This file will be giving a summary to our project for CFG 2020.
