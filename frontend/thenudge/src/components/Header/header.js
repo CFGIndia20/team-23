@@ -30,11 +30,7 @@ class Header extends React.Component {
 
             The Nudge
             </Navbar.Brand>
-            <Button style={{ float: "left" }} 
-            variant="primary" 
-            onClick={()=>this.props.resetCurrentUser()}>
-            Sign Out
-            </Button>
+            <Button hidden={!this.props.currentUser} variant="primary" onClick={()=>this.handleSignOut(this.props.resetCurrentUser)}>Sign Out</Button>
                 
             </Navbar>
         )
