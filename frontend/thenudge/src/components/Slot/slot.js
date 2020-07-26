@@ -29,12 +29,19 @@ const sendButton = (action, id) => {
     }
 }
 
+const allocateTeachers = () => {
+    console.log('In allocate Tezchers')
+    axios.post(`${serverLink}/admin/allotTeachers`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+}
+
 const Slot = (props) => (
     <tr>
         <td>{props.slot.time}</td>
         <td>{props.slot.noOfStudent}</td>
         <td>
-            <span style={{display:"inline"}}><Button hidden={!props.slot.isFull}>Allocate Teacher</Button></span>
+            <span style={{display:"inline"}}><Button onClick={allocateTeachers}>Allocate Teacher</Button></span>
             {sendButton(props.action, props.slot._id)}
         </td>
     </tr>

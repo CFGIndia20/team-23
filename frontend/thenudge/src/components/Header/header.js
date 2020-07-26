@@ -3,12 +3,17 @@ import { Navbar, Button } from 'react-bootstrap';
 import logo from '../../../src/logo.svg';
 import {connect} from 'react-redux'
 import { resetCurrentUser } from '../../redux/user/user.actions';
+import compose from 'recompose/compose';
+import {withRouter} from 'react-router-dom';
 
 
 class Header extends React.Component {
 
-    handleSignOut =() =>{
-        this.props.resetCurrentUser()
+    handleSignOut =(reset) =>{
+        reset()
+        this.props.history.push('/')
+        
+
     }
 
     render() {
@@ -22,6 +27,7 @@ class Header extends React.Component {
                         height="30"
                         className="d-inline-block align-top"
                     />{' '}
+
             The Nudge
             </Navbar.Brand>
             <Button style={{ float: "left" }} 
@@ -43,4 +49,9 @@ const mapDispatchToProps = dispatch => ({
     resetCurrentUser: () => dispatch(resetCurrentUser())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+export default compose(
+    withRouter,
+    connect(mapStateToProps, mapDispatchToProps)
+  )(Header);
+  

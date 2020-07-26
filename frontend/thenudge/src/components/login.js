@@ -44,7 +44,10 @@ class Login extends Component{
           if(res.status === 200){
             console.log(res.data)
             setCurrentUser(res.data)
-            history.push('/')
+            if(res.data.category === 'Student'){
+              history.push('/chooseSlot')
+            }
+            
           }
         })
         .catch( e => console.log(e));

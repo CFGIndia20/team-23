@@ -3,6 +3,8 @@ import { Form, Button ,Card, Container, CardDeck } from 'react-bootstrap';
 import axios from 'axios';
 import ViewSlots from '../../components/ViewSlots/ViewSlots';
 import {Table} from 'react-bootstrap';
+import serverLink from '../../serverlink';
+import Slot from '../../components/Slot/slot';
 
 class Teacher extends React.Component {
 
@@ -11,12 +13,6 @@ class Teacher extends React.Component {
    
     }
     
-
-    onSubmit = async e => {
-    e.preventDefault();   
-
-    }
-
 
     componentDidMount() {
         axios.get(`${serverLink}/viewslots`).then(
@@ -41,12 +37,12 @@ class Teacher extends React.Component {
                     </tr>
                 </thead>
                 <tbody>{
-                    this.state.slots.map((item,idx) => <slots job={item} key={idx}/> )
+                    this.state.slots.map((item,idx) => <Slot job={item} key={idx}/> )
                     }
                 </tbody>
               </Table>
 
-                <Button onSubmit={this.onSubmit}  variant="primary" type="submit">
+                <Button onSubmit variant="primary" type="submit">
                     Notify Admin
                 </Button>  
  

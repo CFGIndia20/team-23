@@ -4,6 +4,7 @@ var Batch = require('../models/batch');
 var Job = require('../models/job');
 const User = require('../models/user');
 
+//add-new-slot
 router.post("/addSlot", function(req, res) {
     console.log(req.body.time)
     var tempBatch = new Batch(
@@ -11,8 +12,8 @@ router.post("/addSlot", function(req, res) {
             time : req.body.time,
             link : req.body.link,
             startDate : req.body.startDate,
-            endDate: new Date(req.body.startDate + 4*30*24*60*60000)
-
+            endDate: new Date(req.body.startDate + 4*30*24*60*60000),
+            noOfStudent: Number(15)
         });
     tempBatch.save()
     .then(reg => {
@@ -23,6 +24,7 @@ router.post("/addSlot", function(req, res) {
     })
 });
 
+//view-slots
 router.get("/viewslots", (req, res) => {
     Batch.find()
     .then(batches => {
@@ -33,6 +35,7 @@ router.get("/viewslots", (req, res) => {
     })
 });
 
+//delete-existing-slot
 router.post("/deleteslot", (req, res) => {
     // console.log(req)
     var batch_id = req.body.batchID
@@ -50,6 +53,7 @@ router.post("/deleteslot", (req, res) => {
     })
 })
 
+//get-list-of-jobs
 router.get("/getJobs", (req, res) => {
     Job.find()
     .then(jobs => {
@@ -60,26 +64,32 @@ router.get("/getJobs", (req, res) => {
     })    
 })
 
+//list-of-alloted-teachers
 router.post("/allotTeachers", (req, res) => {
     Batch.find({noOfStudent : 15})
     .then(batches => {
+        console.log("Batches: " + batches)
         if(!batches) {
             res.send(400).send("No Batches Available for allotment")
         } else {
             batches.forEach((batch) => {
+                console.log("Batch : " + batch)
                 flag = false;
                 User.find({category : 'Teacher'})
                 .then(users => {
+                    console.log("Users : ", users)
                     users.forEach((user) => {
                         if(flag == true) {
                             return;
                         }
                         user.batch.forEach((user_batch) => {
+                            console.log(user_batch)
                             if(flag == true) {
                                 return;
                             }
                             Batch.findById(user_batch.batchId)
                             .then(teacher_batch => {
+                                console.log("Teacher_Batch : " + teacher_batch)
                                 if(teacher_batch.time === batch.time) {
                                     return;
                                 } else {
