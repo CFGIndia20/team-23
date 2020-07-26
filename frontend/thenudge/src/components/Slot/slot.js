@@ -41,7 +41,7 @@ const Slot = (props) => (
         <td>{props.slot.time}</td>
         <td>{props.slot.noOfStudent}</td>
         <td>
-            <span style={{display:"inline"}}><Button onClick={allocateTeachers}>Allocate Teacher</Button></span>
+            <span style={{display:"inline"}}><Button onClick={allocateTeachers} hidden={!props. isallocateTeacher}>Allocate Teacher</Button></span>
             {sendButton(props.action, props.slot._id)}
         </td>
     </tr>

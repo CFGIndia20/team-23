@@ -21,7 +21,7 @@ class Admin extends React.Component {
                         <AddTeacherRecruiter />
                     </Tab>
                     <Tab eventKey="viewJobs" title="View Jobs">
-                        <ViewJobs />
+                        <ViewJobs view="Delete" />
                     </Tab>
                 </Tabs>
             </Container>

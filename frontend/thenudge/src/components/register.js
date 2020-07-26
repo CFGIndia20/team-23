@@ -132,7 +132,7 @@ class Register extends Component {
             <Form.Control as="select" onChange={this.handleOnChangeCategory}>
               <option hidden={!this.props.student}>Student</option>
               <option>Teacher</option>
-              <option>Recriuter</option>
+              <option>Recruiter</option>
               <option>Admin</option>
             </Form.Control>
           </Form.Group>

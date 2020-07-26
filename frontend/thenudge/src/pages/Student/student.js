@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import axios from 'axios';
 import serverLink from '../../serverlink';
+import ViewJobs from '../../components/ViewJobs/ViewJobs'
 
 
 class Student extends React.Component {
@@ -33,9 +34,10 @@ class Student extends React.Component {
     render() {
         return (
             ((this.props.currentUser.category === 'Student' ? (
-                <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+                <div style={{margin:"0 auto"}}>
+                <Tabs defaultActiveKey="viewJobs" id="uncontrolled-tab-example">
                     <Tab eventKey="viewJobs" title="View Jobs">
-                        {
+                        {/* {
                             this.state.jobs.map(item => <Table striped bordered hover>
                                 <thead>
                                     <tr>
@@ -59,12 +61,11 @@ class Student extends React.Component {
 
                                 </tbody>
                             </Table>)
-                        }
-                    </Tab>
-                    <Tab eventKey="chooseSlot" title="Choose Slot">
-                        <ChooseSlot />
+                        } */}
+                        <ViewJobs view="Apply"/>
                     </Tab>
                 </Tabs>
+                </div>
             ) : (<Redirect to={`/${this.props.currentUser.category}`} />)))
 
         )

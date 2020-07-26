@@ -5,6 +5,8 @@ import {connect} from 'react-redux'
 import { setCurrentUser } from '../redux/user/user.actions';
 import serverLink from '../serverlink';
 import {Link} from 'react-router-dom';
+import './login.css'
+import {Form, Button} from 'react-bootstrap'
 
 class Login extends Component{
 
@@ -47,6 +49,9 @@ class Login extends Component{
             if(res.data.category === 'Student'){
               history.push('/chooseSlot')
             }
+            else{
+              history.push('/')
+            }
             
           }
         })
@@ -65,50 +70,29 @@ class Login extends Component{
 
     render(){
         return (
-            <div className="Login" style={{textAlign:"left", width:"80%", margin:"0 auto"}}>
-            <h1> Login </h1> 
-            <form onSubmit={this.onSubmit}>
-              <div>
-                <div className="fields">
-                  <p> Username </p>    
-                  <input
-                    type="text"
-                    name="Username"
-                    onChange={this.handleOnChangeUserName}
-                    autoComplete="Username"
-                    required
-                  />
-                </div>
-                
-                <div className="fields">
-                  
-                  <p> Password </p>    
-                  <input
-                    type="password"
-                    name="Password"
-                    onChange={this.handleOnChangePassword}
-                    autoComplete="Password"
-                    required
-                  />
-                      
-                </div>
-                
-                <div className="buttons">
-                  
-                  <button
-                    type="button"
-                    onClick={this.onSubmit}
-                    className="btn btn-primary"
-                  >
-                    
-                      Login    
-                  </button>
-                </div>
-              </div>
-               
-            </form>
-            <Link to="/register">Register Here</Link>
-          </div>
+          <div style={{width:"70%",margin:"0 auto", textAlign:"left", paddingTop:"100px"}}>
+            <h3>Login</h3>
+          <Form onSubmit={this.onSubmit}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" onChange={this.handleOnChangeUserName} />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+        
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" onChange={this.handleOnChangePassword} />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Login
+          </Button>
+        </Form>
+        <br/>
+        <Link to="/register">Click Here to Register</Link>
+        </div>
+
   
         )
     }

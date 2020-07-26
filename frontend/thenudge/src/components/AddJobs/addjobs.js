@@ -63,7 +63,7 @@ class AddJobs extends React.Component{
     return (
 
       <div className="Registration container" style={{ textAlign: "left", width:"50%" }}>
-        <h1> Register </h1>
+        <h1> Add Job </h1>
         
       {/*Form for Company Name*/}
          <Form onSubmit={this.onSubmit}>
